@@ -11,7 +11,11 @@ Third-party components
 AndroidX (Core KTX, Activity, Lifecycle, DataStore)
 Jetpack Compose and Material 3
 CameraX
-Google ML Kit face detection (bundled model)
 
 These components are licensed under the Apache License, Version 2.0.
+
+Google ML Kit face detection (bundled face models)
+Copyright Google LLC — licensed under the Google ML Kit Terms of Service
+(https://developers.google.com/ml-kit/terms), not the Apache License.
+
 All trademarks and service marks are the property of their respective owners.
