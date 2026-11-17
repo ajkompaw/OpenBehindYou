@@ -19,6 +19,28 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    signingConfigs {
+        create("release") {
+            // CI supplies these via OBY_* environment variables; local builds
+            // may set them via oby.* Gradle properties instead. When absent,
+            // release builds stay unsigned (identical to previous behavior).
+            val storeFilePath = System.getenv("OBY_STORE_FILE")
+                ?: (project.findProperty("oby.storeFile") as String?)
+            val store = storeFilePath?.let { file(it) }
+            if (store != null && store.exists()) {
+                storeFile = store
+                storePassword = System.getenv("OBY_STORE_PASSWORD")
+                    ?: (project.findProperty("oby.storePassword") as String?)
+                keyAlias = System.getenv("OBY_KEY_ALIAS")
+                    ?: (project.findProperty("oby.keyAlias") as String?)
+                keyPassword = (System.getenv("OBY_KEY_PASSWORD")
+                    ?: (project.findProperty("oby.keyPassword") as String?))
+                    ?.takeIf { it.isNotBlank() }
+                    ?: storePassword
+            }
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
@@ -31,6 +53,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            signingConfig = signingConfigs.getByName("release")
+                .takeIf { it.storeFile?.exists() == true }
         }
     }
 

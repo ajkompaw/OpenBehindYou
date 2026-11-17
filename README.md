@@ -149,6 +149,10 @@ git clone https://github.com/ajkompaw/OpenBehindYou.git
 cd OpenBehindYou
 ```
 
+### Download a prebuilt APK
+
+Signed APKs for tagged versions are attached to the [Releases page](https://github.com/ajkompaw/OpenBehindYou/releases) as `OpenBehindYou-vX.Y.Z.apk`.
+
 ### Requirements
 
 - JDK 17–22 (the verified local build used JDK 22; CI uses 17)
@@ -188,7 +192,27 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ### Release signing
 
-Add your own signing configuration in `app/build.gradle.kts` or via Android Studio. Release builds enable R8 and resource shrinking.
+Release APKs are signed in CI and published automatically. The keystore is **never** committed — it exists only as GitHub Actions secrets.
+
+**One-time setup** (repository owner):
+
+1. Keep the generated keystore (`keystore/openbehindyou-release.jks`, git-ignored) and its password in a password manager.
+2. Add these secrets under **Settings → Secrets and variables → Actions**:
+   - `KEYSTORE_B64` — keystore file, base64-encoded as a single line
+   - `KEYSTORE_PASSWORD` — keystore password
+   - `KEY_ALIAS` — key alias (default: `openbehindyou`)
+   - `KEY_PASSWORD` — key password (optional; defaults to the keystore password)
+
+**Cutting a release:**
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+The Release workflow then builds, signs, verifies the signature with `apksigner`, and attaches `OpenBehindYou-v1.0.0.apk` to a new GitHub Release with generated notes.
+
+**Local signed builds** (optional): export `OBY_STORE_FILE`, `OBY_STORE_PASSWORD`, `OBY_KEY_ALIAS`, and optionally `OBY_KEY_PASSWORD` before `./gradlew :app:assembleRelease`, or set the equivalent `oby.storeFile` / `oby.storePassword` / `oby.keyAlias` / `oby.keyPassword` Gradle properties. Without them, release builds are unsigned — as before. Release builds enable R8 and resource shrinking either way.
 
 ## Technology
 
