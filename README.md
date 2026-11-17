@@ -8,14 +8,6 @@
 
 OpenBehindYou uses the front-facing camera, CameraX, and Google ML Kit to notice when a second person may be looking at your screen. All processing happens on the device. The app requests no internet permission, stores no images, and does not use a screen overlay.
 
-## Status
-
-- `./gradlew :app:assembleDebug` — build verified
-- `./gradlew :app:testDebugUnitTest` — unit tests pass
-- `./gradlew :app:lintDebug` — lint passes
-- GitHub Actions runs tests, lint, and the debug build on every push, and uploads the APK as a build artifact.
-- No physical device or emulator was attached during the final verification, so camera behavior on a specific OEM ROM should be smoke-tested before release.
-
 ## Features
 
 - **Front-camera guard as a camera foreground service** (`GuardService`) that keeps working while you use other apps.
