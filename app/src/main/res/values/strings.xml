@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenBehindYou</string>
+
+    <!-- Navigation and dashboard -->
+    <string name="tab_guard">Guard</string>
+    <string name="tab_settings">Settings</string>
+    <string name="guard_title">Background guard</string>
+    <string name="guard_subtitle_on">The front camera is inspecting your surroundings. Everything stays on this device.</string>
+    <string name="guard_subtitle_off">Turn on Guard to watch for someone looking over your shoulder while you use other apps.</string>
+    <string name="guard_off_title">Guard is off</string>
+    <string name="guard_off_description">No camera access. Turn on Guard to begin local inspection.</string>
+    <string name="guard_starting_title">Starting guard…</string>
+    <string name="chip_live">LIVE</string>
+    <string name="chip_off">OFF</string>
+    <string name="chip_starting">STARTING</string>
+    <string name="guard_active_across_apps">Active while you use other apps</string>
+    <string name="sensitivity_current">Sensitivity: %1$s</string>
+
+    <string name="level_safe">Safe</string>
+    <string name="level_caution">Caution</string>
+    <string name="level_alert">Alert</string>
+
+    <string name="status_detail_safe">Only you in view</string>
+    <string name="status_detail_no_face">No face in view</string>
+    <string name="status_detail_caution_secondary">A second face is nearby</string>
+    <string name="status_detail_caution_motion">Movement near a possible face</string>
+    <string name="status_detail_alert">Someone may be looking over your shoulder</string>
+    <string name="status_detail_off">Background guard is off</string>
+    <string name="status_detail_starting">Starting front camera…</string>
+
+    <string name="metric_faces">Faces</string>
+    <string name="metric_faces_value">%1$d in view</string>
+    <string name="metric_fps">Analysis</string>
+    <string name="metric_fps_value">%1$.1f FPS</string>
+    <string name="metric_scan">Scanning</string>
+    <string name="metric_scan_low">Low power</string>
+    <string name="metric_scan_high">Boosted</string>
+    <plurals name="metric_nearby">
+        <item quantity="one">%1$d nearby</item>
+        <item quantity="other">%1$d nearby</item>
+    </plurals>
+    <string name="value_unavailable">—</string>
+    <string name="error_attention_title">Guard needs attention</string>
+    <string name="no_alert_yet">No alerts this session</string>
+    <string name="last_alert_format">%1$s</string>
+    <string name="last_alert_now">just now</string>
+    <string name="last_alert_seconds">%1$d s ago</string>
+    <string name="last_alert_minutes">%1$d min ago</string>
+    <string name="privacy_strip">On-device only · No internet permission · No overlay</string>
+    <string name="how_it_works_title">How Guard works</string>
+    <string name="how_it_works_1">The front camera samples frames locally. Frames never leave the device.</string>
+    <string name="how_it_works_2">ML Kit finds faces, then heuristics ignore distant background faces and require proximity plus head pose for an alert.</string>
+    <string name="how_it_works_3">Motion or a second face boosts the scan rate. A confirmed over-the-shoulder pose raises a red alert.</string>
+    <string name="sensitivity_applies_immediately">Changes apply immediately while Guard is running.</string>
+    <string name="settings_saved_note">Selection is stored only on this device.</string>
+    <string name="alert_reason_over_shoulder">Head orientation and face position indicate a possible over-the-shoulder view.</string>
+    <string name="alert_reason_secondary">A secondary face is close to yours. Confirm that nobody is reading your screen.</string>
+    <string name="alert_reason_motion">Movement was detected near a possible face.</string>
+    <string name="alert_reason_generic">A possible shoulder surfer was detected. Your screen may be visible to someone else.</string>
+
+    <!-- Permissions and errors -->
+    <string name="permission_camera_required">Camera permission is required to guard your screen.</string>
+    <string name="permission_notifications_limited">Notifications are disabled. Alert banners and the persistent status indicator will not appear; haptic warnings may still work.</string>
+    <string name="permission_needed_title">Permission needed</string>
+    <string name="notification_permission_needed_title">Enable notifications</string>
+    <string name="open_settings">Open settings</string>
+    <string name="error_camera_permission">Camera permission is missing. Enable it in Android settings.</string>
+    <string name="error_no_front_camera">This device does not expose a front-facing camera.</string>
+    <string name="error_camera_start">The front camera could not be started. It may be in use by another app.</string>
+    <string name="error_camera_runtime">The camera stopped unexpectedly. Turn Guard off and on again.</string>
+    <string name="error_foreground_service">Android blocked the camera foreground service. Start Guard while the app is open.</string>
+
+    <!-- Notifications -->
+    <string name="status_channel_name">Guard status</string>
+    <string name="status_channel_description">Persistent status for the on-device privacy guard.</string>
+    <string name="alert_channel_name">Guard alerts</string>
+    <string name="alert_channel_description">High-priority warnings when someone may be looking at your screen.</string>
+    <string name="status_notification_title_live">Guard active</string>
+    <string name="status_notification_title_starting">Starting guard</string>
+    <string name="status_notification_title_stopped">Guard stopped</string>
+    <string name="status_notification_state_safe">SAFE</string>
+    <string name="status_notification_state_caution">CAUTION</string>
+    <string name="status_notification_state_alert">ALERT</string>
+    <string name="status_notification_state_starting">STARTING</string>
+    <string name="status_notification_state_issue">ISSUE</string>
+    <string name="status_notification_state_idle">OFF</string>
+    <string name="status_notification_stop">Stop</string>
+    <string name="alert_notification_title">Shoulder-surfing risk</string>
+    <string name="alert_notification_expanded">Open OpenBehindYou to review the live guard status.</string>
+    <string name="alert_notification_stop">Stop guard</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Detection settings</string>
+    <string name="settings_intro">Choose how eagerly OpenBehindYou flags nearby faces. Higher sensitivity catches more subtle peekers but can produce more false positives.</string>
+    <string name="sensitivity_title">Sensitivity</string>
+    <string name="sensitivity_low">Low</string>
+    <string name="sensitivity_medium">Medium</string>
+    <string name="sensitivity_high">High</string>
+    <string name="sensitivity_low_description">Requires a large, close secondary face and a clear head-on orientation. Fewer false alerts.</string>
+    <string name="sensitivity_medium_description">Balanced proximity and head-orientation thresholds for everyday use.</string>
+    <string name="sensitivity_high_description">Catches smaller or more distant faces. Best for crowded spaces; may warn more often.</string>
+    <string name="adaptive_scan_title">Adaptive scanning</string>
+    <string name="adaptive_scan_description">When the scene is still, analysis drops to about 1–2 FPS. Motion or a second-face candidate boosts it to about 9–11 FPS for a few seconds, then it settles back down.</string>
+    <string name="battery_title">Battery behavior</string>
+    <string name="battery_description">A foreground camera service necessarily keeps the camera active. Adaptive frame processing reduces CPU and ML Kit work, but camera use will still be reflected in battery statistics.</string>
+    <string name="privacy_title">Privacy by design</string>
+    <string name="privacy_local_title">100% on-device</string>
+    <string name="privacy_local_description">ML Kit’s bundled face detector runs locally. Frames are analyzed in memory and discarded immediately.</string>
+    <string name="privacy_no_network_title">No internet permission</string>
+    <string name="privacy_no_network_description">The manifest removes INTERNET and ACCESS_NETWORK_STATE even if a dependency tries to add them.</string>
+    <string name="privacy_no_overlay_title">No overlay permission</string>
+    <string name="privacy_no_overlay_description">Android does not allow a true always-on floating pill without SYSTEM_ALERT_WINDOW. OpenBehindYou uses a persistent status notification plus a high-priority heads-up alert instead.</string>
+    <string name="privacy_camera_title">Visible, interruptible camera use</string>
+    <string name="privacy_camera_description">Android shows the camera privacy indicator and the ongoing guard notification. Stop Guard at any time from the app or notification.</string>
+    <string name="about_title">About</string>
+    <string name="about_description">OpenBehindYou is an open-source, local-only anti-shoulder-surfing guard. Detection is heuristic, not a guarantee of privacy.</string>
+    <string name="about_license">Apache License 2.0</string>
+    <string name="limitations_title">Limits and false positives</string>
+    <string name="limitations_description">Face size, head angle, and proximity heuristics cannot know gaze or intent. A crowded room, reflections, posters, or another person beside you can trigger a warning. Treat alerts as a prompt to check your surroundings, not proof of an attacker. While Guard is on it owns the front camera, so other apps may be unable to use that camera.</string>
+
+    <!-- Accessibility -->
+    <string name="cd_status_indicator">Threat level: %1$s</string>
+    <string name="cd_guard_switch">Toggle background guard</string>
+    <string name="cd_privacy_shield">Local privacy guard</string>
+</resources>
