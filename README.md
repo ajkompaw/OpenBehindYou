@@ -1,5 +1,9 @@
 # OpenBehindYou
 
+[![Android CI](https://github.com/ajkompaw/OpenBehindYou/actions/workflows/android.yml/badge.svg)](https://github.com/ajkompaw/OpenBehindYou/actions/workflows/android.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Min SDK 26](https://img.shields.io/badge/Min%20SDK-26-green.svg)](https://developer.android.com/about/versions/oreo)
+
 > Private, on-device anti-shoulder-surfing detection for Android.
 
 OpenBehindYou uses the front-facing camera, CameraX, and Google ML Kit to notice when a second person may be looking at your screen. All processing happens on the device. The app requests no internet permission, stores no images, and does not use a screen overlay.
@@ -9,6 +13,7 @@ OpenBehindYou uses the front-facing camera, CameraX, and Google ML Kit to notice
 - `./gradlew :app:assembleDebug` — build verified
 - `./gradlew :app:testDebugUnitTest` — unit tests pass
 - `./gradlew :app:lintDebug` — lint passes
+- GitHub Actions runs tests, lint, and the debug build on every push, and uploads the APK as a build artifact.
 - No physical device or emulator was attached during the final verification, so camera behavior on a specific OEM ROM should be smoke-tested before release.
 
 ## Features
@@ -145,6 +150,13 @@ See [PRIVACY.md](PRIVACY.md).
 
 ## Build
 
+### Get the code
+
+```bash
+git clone https://github.com/ajkompaw/OpenBehindYou.git
+cd OpenBehindYou
+```
+
 ### Requirements
 
 - JDK 17–22 (the verified local build used JDK 22; CI uses 17)
@@ -154,7 +166,11 @@ See [PRIVACY.md](PRIVACY.md).
 
 If Android Studio uses a newer JBR than the Gradle 8.9/AGP 8.7 stack supports, set **Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK** to a JDK 17 or 22 installation.
 
-The checked-in `local.properties` points at the machine's SDK in this workspace (`W:\Cache\android-sdk`). On another machine, replace it with your own path or let Android Studio generate it. `local.properties` is git-ignored.
+`local.properties` is intentionally **not** committed — it is git-ignored because it contains machine-specific paths. Android Studio generates it automatically when you open the project. For command-line builds, either set the `ANDROID_HOME` or `ANDROID_SDK_ROOT` environment variable, or create `local.properties` yourself:
+
+```properties
+sdk.dir=C\:\\path\\to\\your\\Android\\sdk
+```
 
 ```bash
 # Windows
@@ -207,4 +223,8 @@ Issues and pull requests are welcome. Please keep the privacy invariants intact:
 
 ## License
 
-Apache License 2.0. See [LICENSE](LICENSE).
+Copyright 2026 ajkompaw.
+
+Licensed under the Apache License, Version 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+You may obtain a copy of the License at <http://www.apache.org/licenses/LICENSE-2.0> unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

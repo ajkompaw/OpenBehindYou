@@ -1,0 +1,17 @@
+OpenBehindYou
+Copyright 2026 ajkompaw
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product includes software developed by the OpenBehindYou project
+contributors.
+
+Third-party components
+----------------------
+AndroidX (Core KTX, Activity, Lifecycle, DataStore)
+Jetpack Compose and Material 3
+CameraX
+Google ML Kit face detection (bundled model)
+
+These components are licensed under the Apache License, Version 2.0.
+All trademarks and service marks are the property of their respective owners.
